@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sea-mengxin-ml-deployment
+spec:
+  selector:
+    matchLabels:
+      app: sea-mengxin-ml-web
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: sea-mengxin-ml-web
+    spec:
+      containers:
+        - name: sea-mengxin-ml
+          image: mengxin891029/sea-mengxin-ml
+          ports:
+            - name: https
+              containerPort: 443
+            - name: http
+              containerPort: 80
