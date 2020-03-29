@@ -5,5 +5,5 @@ docker push mengxin891029/sea-mengxin-ml:latest
 
 
 # update kubernetes
-# kubectl apply -f k8s
-# kubectl set image deployments/sea-mengxin-ml-deployment sea-mengxin-ml=mengxin891029/sea-mengxin-ml:$GIT_SHA
+kubectl apply -f k8s
+kubectl set image deployments/sea-mengxin-ml-deployment sea-mengxin-ml=mengxin891029/sea-mengxin-ml:$GIT_SHA
