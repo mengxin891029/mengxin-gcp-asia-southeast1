@@ -16,7 +16,5 @@ spec:
         - name: sea-mengxin-ml
           image: mengxin891029/sea-mengxin-ml
           ports:
-            - name: https
-              containerPort: 443
             - name: http
               containerPort: 80

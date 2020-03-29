@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: mengxin-httpbin-internal
+    annotations:
+        cloud.google.com/load-balancer-type: "Internal"
+        # kubernetes.io/ingress.global-static-ip-name: "mengxin-sea-k8s-httpbin-internal"
+spec:
+    type: LoadBalancer
+    selector:
+        app: httpbin-mengxin-ml
+    ports:
+        - name: http
+          port: 80
+          targetPort: 80
+        # - name: https
+        #  port: 443
+        #  targetPort: 443
