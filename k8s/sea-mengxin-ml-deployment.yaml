@@ -5,12 +5,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: sea-mengxin-ml-web
-  replicas: 2
+      app: sea-mengxin-ml
+  replicas: 1
   template:
     metadata:
       labels:
-        app: sea-mengxin-ml-web
+        app: sea-mengxin-ml
     spec:
       containers:
         - name: sea-mengxin-ml

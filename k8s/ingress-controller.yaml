@@ -8,9 +8,17 @@ metadata:
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
     rules:
-        - http:
+        - host: sea.mengxin.ml
+          http:
               paths:
                   - path: /
                     backend:
                         serviceName: sea-mengxin-ml-clusterip
+                        servicePort: 80
+        - host: httpbin.mengxin.ml
+          http:
+              paths:
+                  - path: /
+                    backend:
+                        serviceName: httpbin-mengxin-ml-clusterip
                         servicePort: 80

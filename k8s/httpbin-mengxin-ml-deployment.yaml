@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: httpbin-mengxin-ml-deployment
+    labels:
+        app: httpbin
+        type: pod
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: httpbin-mengxin-ml
+    template:
+        metadata:
+            labels:
+                app: httpbin-mengxin-ml
+        spec:
+            containers:
+                - name: httpbin-mengxin-ml
+                  image: kennethreitz/httpbin
