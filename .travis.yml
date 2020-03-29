@@ -5,16 +5,16 @@ services:
 env:
   global:
     - GIT_SHA=$(git rev-parse HEAD)
-    # - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
-  # - openssl aes-256-cbc -K $encrypted_5185800709ee_key -iv $encrypted_5185800709ee_iv -in globalse-198312.json.enc -out globalse-198312.json -d
-  # - curl https://sdk.cloud.google.com | bash > /dev/null;
-  # - source $HOME/google-cloud-sdk/path.bash.inc
-  # - gcloud components update kubectl
-  # - gcloud auth activate-service-account --key-file globalse-198312.json
-  # - gcloud config set project globalse-198312
-  # - gcloud config set compute/zone asia-southeast1-a
-  # - gcloud container clusters get-credentials mengxin-sea1-test-k8s
+  - openssl aes-256-cbc -K $encrypted_5185800709ee_key -iv $encrypted_5185800709ee_iv -in globalse-198312.json.enc -out globalse-198312.json -d
+  - curl https://sdk.cloud.google.com | bash > /dev/null;
+  - source $HOME/google-cloud-sdk/path.bash.inc
+  - gcloud components update kubectl
+  - gcloud auth activate-service-account --key-file globalse-198312.json
+  - gcloud config set project globalse-198312
+  - gcloud config set compute/zone asia-southeast1-a
+  - gcloud container clusters get-credentials mengxin-sea1-test-k8s
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   # Testing phase
   # - docker build -t mengxin891029/test-sea-mengxin-ml -f ./docker-images/sea/dev/Dockerfile.dev ./docker-images/sea/dev
