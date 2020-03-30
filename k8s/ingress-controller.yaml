@@ -12,9 +12,25 @@ spec:
         - hosts:
               - sea.mengxin.ml
               - httpbin.mengxin.ml
+              - mengxin.ml
+              - www.mengxin.ml
           secretName: mengxin-ml-cert
     rules:
         - host: sea.mengxin.ml
+          http:
+              paths:
+                  - path: /
+                    backend:
+                        serviceName: sea-mengxin-ml-clusterip
+                        servicePort: 80
+        - host: www.mengxin.ml
+          http:
+              paths:
+                  - path: /
+                    backend:
+                        serviceName: sea-mengxin-ml-clusterip
+                        servicePort: 80
+        - host: mengxin.ml
           http:
               paths:
                   - path: /

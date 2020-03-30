@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tunnel-mengxin-ml-deployment
+spec:
+  selector:
+    matchLabels:
+      app: tunnel-mengxin-ml
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tunnel-mengxin-ml
+    spec:
+      containers:
+        - name: tunnel-mengxin-ml
+          image: mengxin891029/tunnel-mengxin-ml
+          ports:
+            - name: http
+              containerPort: 80
