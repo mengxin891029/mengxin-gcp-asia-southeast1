@@ -1,0 +1,28 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: test-endpoint
+spec:
+  type: ClusterIP
+  ports:
+    - port: 2375
+      targetPort: 2375
+
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: test-endpoint
+subsets:
+  - addresses:
+      - ip: 10.0.1.16
+    ports:
+      - port: 2375
+# ---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: test-externalname
+# spec:
+#   type: ExternalName
+#   externalName: 10.0.1.16

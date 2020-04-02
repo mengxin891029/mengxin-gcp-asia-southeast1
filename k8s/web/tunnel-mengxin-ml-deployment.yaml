@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sea-mengxin-ml-deployment
+  name: tunnel-mengxin-ml-deployment
+  namespace: web
 spec:
   selector:
     matchLabels:
-      app: sea-mengxin-ml
+      app: tunnel-mengxin-ml
   replicas: 1
   template:
     metadata:
       labels:
-        app: sea-mengxin-ml
+        app: tunnel-mengxin-ml
     spec:
       containers:
-        - name: sea-mengxin-ml
-          image: mengxin891029/sea-mengxin-ml
+        - name: tunnel-mengxin-ml
+          image: mengxin891029/tunnel-mengxin-ml
           ports:
             - name: http
               containerPort: 80

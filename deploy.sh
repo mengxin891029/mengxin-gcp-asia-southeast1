@@ -10,6 +10,6 @@ docker push mengxin891029/tunnel-mengxin-ml:latest
 
 
 # update kubernetes
-kubectl apply -f k8s
+kubectl apply -f k8s/web
 kubectl set image deployments/sea-mengxin-ml-deployment sea-mengxin-ml=mengxin891029/sea-mengxin-ml:$GIT_SHA
 kubectl set image deployments/tunnel-mengxin-ml-deployment tunnel-mengxin-ml=mengxin891029/tunnel-mengxin-ml:$GIT_SHA

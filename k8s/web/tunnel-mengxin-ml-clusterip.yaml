@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: httpbin-mengxin-ml-clusterip
+  name: tunnel-mengxin-ml-clusterip
+  namespace: web
 spec:
   selector:
-    app: httpbin-mengxin-ml
+    app: tunnel-mengxin-ml
   type: ClusterIP
   ports:
     - name: http
