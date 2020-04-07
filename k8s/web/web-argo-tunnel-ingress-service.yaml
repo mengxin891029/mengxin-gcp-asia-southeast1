@@ -1,12 +1,10 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-    name: mengxin-asia-southeast1-k8s-ingress-argo-tunnel-service
+    name: web-argo-tunnel-ingress-service
     namespace: web
     annotations:
         kubernetes.io/ingress.class: argo-tunnel
-        # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-        # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     labels:
         ingress: argo-tunnel
 spec:

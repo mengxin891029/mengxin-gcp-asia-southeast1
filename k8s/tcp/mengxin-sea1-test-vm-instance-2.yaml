@@ -1,0 +1,8 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mengxin-sea1-test-vm-instance-2
+  namespace: tcp
+spec:
+  type: ExternalName
+  externalName: 10.0.1.18
