@@ -5,7 +5,7 @@ metadata:
   namespace: web
 spec:
   selector:
-    app: tunnel-mengxin-ml
+    pod: tunnel-mengxin-ml
   type: ClusterIP
   ports:
     - name: http

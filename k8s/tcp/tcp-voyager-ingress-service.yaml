@@ -30,8 +30,8 @@ spec:
     - tcp:
         port: "2407"
         backend:
-          serviceName: mengxin-sea1-test-vm-instance-1
-          # serviceName: ky-ip
+          # serviceName: mengxin-sea1-test-vm-instance-1
+          serviceName: ssl-mengxin-ml-keyless-clusterip
           servicePort: "2407"
     # mengxin-sea1-test-vm-instance-1 docker tls remote host traffic
     - tcp:

@@ -3,15 +3,18 @@ kind: Deployment
 metadata:
   name: sea-mengxin-ml-deployment
   namespace: web
+  labels:
+    app: sea
+    hostname: sea.mengxin.ml
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: sea-mengxin-ml
-  replicas: 1
+      pod: sea-mengxin-ml
   template:
     metadata:
       labels:
-        app: sea-mengxin-ml
+        pod: sea-mengxin-ml
     spec:
       containers:
         - name: sea-mengxin-ml

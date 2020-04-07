@@ -5,7 +5,7 @@ metadata:
   namespace: web
 spec:
   selector:
-    app: sea-mengxin-ml
+    pod: sea-mengxin-ml
   type: ClusterIP
   ports:
     - name: http

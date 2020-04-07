@@ -3,15 +3,18 @@ kind: Deployment
 metadata:
   name: tunnel-mengxin-ml-deployment
   namespace: web
+  labels:
+    app: tunnel
+    hostname: tunnel.mengxin.ml
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: tunnel-mengxin-ml
-  replicas: 1
+      pod: tunnel-mengxin-ml
   template:
     metadata:
       labels:
-        app: tunnel-mengxin-ml
+        pod: tunnel-mengxin-ml
     spec:
       containers:
         - name: tunnel-mengxin-ml

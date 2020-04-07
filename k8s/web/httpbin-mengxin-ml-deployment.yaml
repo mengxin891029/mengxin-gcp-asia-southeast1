@@ -5,16 +5,16 @@ metadata:
     namespace: web
     labels:
         app: httpbin
-        type: pod
+        hostname: httpbin.mengxin.ml
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: httpbin-mengxin-ml
+            pod: httpbin-mengxin-ml
     template:
         metadata:
             labels:
-                app: httpbin-mengxin-ml
+                pod: httpbin-mengxin-ml
         spec:
             containers:
                 - name: httpbin-mengxin-ml

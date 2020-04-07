@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: keys-storage-pv
+  namespace: tcp
+spec:
+  storageClassName: "keys-storage"
+  capacity:
+    storage: 10G
+  accessModes:
+    - ReadOnlyMany
+  claimRef:
+    namespace: tcp
+    name: keys-storage-pvc
+  gcePersistentDisk:
+    pdName: mengxin-asia-southeast1-a-pd
+    fsType: ext4
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: keys-storage-pvc
+  namespace: tcp
+spec:
+  storageClassName: "keys-storage"
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 10G

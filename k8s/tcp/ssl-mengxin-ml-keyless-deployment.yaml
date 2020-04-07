@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssl-mengxin-ml-keyless-deployment
+  namespace: tcp
+  labels:
+    app: keyless
+    hostname: ssl.mengxin.ml
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+          pod: ssl-mengxin-ml
+    template:
+        metadata:
+          labels:
+            pod: ssl-mengxin-ml
+        spec:
+          volumes:
+            - name: keys-storage
+              persistentVolumeClaim:
+                claimName: keys-storage-pvc
+          containers:
+            - name: ssl-mengxin-ml
+              image: mengxin891029/keyless
+              ports:
+                - name: keyless
+                  containerPort: 2407
+              volumeMounts:
+                - name: keys-storage
+                  mountPath: /etc/keyless/keys
+              command: ["/bin/bash","-c"]
+              args: 
+                - sed -i s/hostname:/hostname:\ $hostname/g /etc/keyless/gokeyless.yaml;
+                  sed -i s/zone_id:/zone_id:\ $zone_id/g /etc/keyless/gokeyless.yaml;
+                  sed -i s/origin_ca_api_key:/origin_ca_api_key:\ $origin_ca_api_key/g /etc/keyless/gokeyless.yaml;
+                  sed -i s/loglevel:\ 1/loglevel:\ 5/g /etc/keyless/gokeyless.yaml;
+                  gokeyless;
+              env:
+                - name: hostname
+                  valueFrom:
+                    secretKeyRef:
+                      name: ssl-mengxin-ml-keyless-config
+                      key: hostname
+                - name: zone_id
+                  valueFrom:
+                    secretKeyRef:
+                      name: ssl-mengxin-ml-keyless-config
+                      key: zone_id
+                - name: origin_ca_api_key
+                  valueFrom:
+                    secretKeyRef:
+                      name: ssl-mengxin-ml-keyless-config
+                      key: origin_ca_api_key
+                
