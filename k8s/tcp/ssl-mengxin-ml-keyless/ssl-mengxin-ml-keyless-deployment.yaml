@@ -5,9 +5,8 @@ metadata:
   namespace: tcp
   labels:
     app: keyless
-    hostname: ssl.mengxin.ml
 spec:
-    replicas: 1
+    replicas: 2
     selector:
         matchLabels:
           pod: ssl-mengxin-ml
@@ -18,8 +17,9 @@ spec:
         spec:
           volumes:
             - name: keys-storage
-              persistentVolumeClaim:
-                claimName: keys-storage-pvc
+              nfs:
+                  path: /
+                  server: keys-storage-nfs-clusterip.tcp.svc.cluster.local
           containers:
             - name: ssl-mengxin-ml
               image: mengxin891029/keyless

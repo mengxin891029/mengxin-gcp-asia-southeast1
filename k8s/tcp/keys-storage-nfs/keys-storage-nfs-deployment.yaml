@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keys-storage-nfs-deployment
+  namespace: tcp
+  labels:
+    app: keys-storage-nfs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: keys-storage-nfs
+  template:
+    metadata:
+      labels:
+        pod: keys-storage-nfs
+    spec:
+      volumes:
+        - name: keys-storage
+          persistentVolumeClaim:
+            claimName: keys-storage-pvc
+      containers:
+        - name: keys-storage-nfs
+          image: itsthenetwork/nfs-server-alpine:latest
+          securityContext:
+            privileged: true
+          ports:
+            - name: nfs-111
+              containerPort: 111
+            - name: nfs-2049
+              containerPort: 2049
+          volumeMounts:
+            - name: keys-storage
+              mountPath: /mnt/keys-storage
+          env:
+            - name: SHARED_DIRECTORY
+              value: /mnt/keys-storage

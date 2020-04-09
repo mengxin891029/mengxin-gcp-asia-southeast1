@@ -15,8 +15,10 @@ kubectl apply -f k8s/web/sea-mengxin-ml
 kubectl set image --namespace web deployments/sea-mengxin-ml-deployment sea-mengxin-ml=mengxin891029/sea-mengxin-ml:$GIT_SHA
 
 
+
 # update httpbin-mengxin-ml
 kubectl apply -f k8s/web/httpbin-mengxin-ml
+
 
 
 # update tunnel-mengxin-ml
@@ -50,6 +52,11 @@ docker push mengxin891029/keyless:$GIT_SHA
 docker push mengxin891029/keyless:latest
 kubectl apply -f k8s/tcp/ssl-mengxin-ml-keyless
 kubectl set image --namespace tcp deployments/ssl-mengxin-ml-keyless-deployment ssl-mengxin-ml=mengxin891029/keyless:$GIT_SHA
+
+
+
+# update keys-storage-nfs
+kubectl apply -f k8s/tcp/keys-storage-nfs
 
 
 
