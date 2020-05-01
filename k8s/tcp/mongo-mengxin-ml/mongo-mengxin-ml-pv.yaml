@@ -1,0 +1,41 @@
+# apiVersion: storage.k8s.io/v1
+# kind: StorageClass
+# metadata:
+#   name: gcp-ssd
+# provisioner: kubernetes.io/gce-pd
+# parameters:
+#   type: pd-ssd
+#   fstype: ext4
+#   replication-type: none
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-storage-pv
+  namespace: tcp
+spec:
+  storageClassName: "mongo-storage"
+  capacity:
+    storage: 10G
+  accessModes:
+    - ReadWriteOnce
+  claimRef:
+    namespace: tcp
+    name: mongo-storage-pvc
+  gcePersistentDisk:
+    pdName: mengxin-asia-southeast1-a-pd-3
+    fsType: ext4
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-storage-pvc
+  namespace: tcp
+spec:
+  storageClassName: "mongo-storage"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10G

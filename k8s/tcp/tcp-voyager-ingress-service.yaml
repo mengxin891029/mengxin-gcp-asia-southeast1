@@ -26,7 +26,7 @@ spec:
         backend:
           serviceName: mengxin-sea1-test-vm-instance-2
           servicePort: "22"
-    # mengxin-sea1-test-vm-instance-1 keyless ssl  traffic (dev)
+    # mengxin-sea1-test-vm-instance-1 keyless ssl traffic (dev)
     - tcp:
         port: "2407"
         backend:
@@ -39,3 +39,10 @@ spec:
         backend:
           serviceName: mengxin-sea1-test-vm-instance-1
           servicePort: "2376"
+    # mongo-mengxin-ml traffic 
+    - tcp:
+        port: "27017"
+        backend:
+          serviceName: mongo-mengxin-ml-clusterip
+          servicePort: "27017"
+
