@@ -1,7 +1,7 @@
 const redis = require("redis");
 
 const client = redis.createClient({
-    host: 'redis-mengxin-ml-clusterip.tcp.svc.cluster.local',
+    host: process.env.REDISHOST,
     db: 1
 })
 

@@ -28,3 +28,13 @@ spec:
                 secretKeyRef:
                   name: chat-mengxin-ml-config
                   key: JWTSIGN
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: chat-mengxin-ml-config
+                  key: PORT
+            - name: REDISHOST
+              valueFrom:
+                secretKeyRef:
+                  name: chat-mengxin-ml-config
+                  key: REDISHOST
