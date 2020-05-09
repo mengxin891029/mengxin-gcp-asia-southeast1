@@ -16,6 +16,7 @@ spec:
               - mengxin.ml
               - www.mengxin.ml
               - mongo-express.mengxin.ml
+              - chat.mengxin.ml
           secretName: mengxin-ml-cert
     rules:
         - host: sea.mengxin.ml
@@ -24,7 +25,7 @@ spec:
                   - path: /
                     backend:
                         serviceName: sea-mengxin-ml-clusterip
-                        servicePort: 80          
+                        servicePort: 80
         - host: www.mengxin.ml
           http:
               paths:
@@ -53,3 +54,10 @@ spec:
                     backend:
                         serviceName: mongo-express-mengxin-ml-clusterip
                         servicePort: 8081
+        - host: chat.mengxin.ml
+          http:
+              paths:
+                  - path: /
+                    backend:
+                        serviceName: chat-mengxin-ml-clusterip
+                        servicePort: 3000

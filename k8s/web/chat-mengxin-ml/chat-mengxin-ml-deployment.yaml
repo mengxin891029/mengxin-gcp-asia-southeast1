@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-mengxin-ml-deployment
+  namespace: web
+  labels:
+    app: chat
+    hostname: chat.mengxin.ml
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: chat-mengxin-ml
+  template:
+    metadata:
+      labels:
+        pod: chat-mengxin-ml
+    spec:
+      containers:
+        - name: chat-mengxin-ml
+          image: mengxin891029/chat-mengxin-ml
+          ports:
+            - name: chat-http
+              containerPort: 3000
+          env:
+            - name: JWTSIGN
+              valueFrom:
+                secretKeyRef:
+                  name: chat-mengxin-ml-config
+                  key: JWTSIGN

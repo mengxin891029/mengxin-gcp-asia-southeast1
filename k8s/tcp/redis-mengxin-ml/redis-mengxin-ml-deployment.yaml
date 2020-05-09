@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-mengxin-ml-deployment
+  namespace: tcp
+  labels:
+    app: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: redis-mengxin-ml
+  template:
+    metadata:
+      labels:
+        pod: redis-mengxin-ml
+    spec:
+      containers:
+        - name: redis-mengxin-ml
+          image: redis
+          ports:
+            - containerPort: 6379
