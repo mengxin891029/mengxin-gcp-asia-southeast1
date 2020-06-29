@@ -1,0 +1,8 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mengxin-gns3-vm-instance-1
+  namespace: tcp
+spec:
+  type: ExternalName
+  externalName: 10.0.2.16

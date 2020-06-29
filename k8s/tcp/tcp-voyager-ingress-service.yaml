@@ -13,41 +13,33 @@ spec:
         backend:
           serviceName: mengxin-sea1-test-vm-instance-1
           servicePort: "22"
-    # mengxin-sea1-test-vm-instance-1 docker remote host traffic
-    # - host: docker.mengxin.ml
-    #   tcp:
-    #     port: "2375"
-    #     backend:
-    #       serviceName: mengxin-sea1-test-vm-instance-1
-    #       servicePort: "2375"
-    # mengxin-sea1-test-vm-instance-2 ssh traffic
-    - tcp:
-        port: "2002"
-        backend:
-          serviceName: mengxin-sea1-test-vm-instance-2
-          servicePort: "22"
-    # mengxin-sea1-test-vm-instance-1 keyless ssl traffic (dev)
-    - tcp:
-        port: "2407"
-        backend:
-          # serviceName: mengxin-sea1-test-vm-instance-1
-          serviceName: ssl-mengxin-ml-keyless-clusterip
-          servicePort: "2407"
     # mengxin-sea1-test-vm-instance-1 docker tls remote host traffic
     - tcp:
         port: "2376"
         backend:
           serviceName: mengxin-sea1-test-vm-instance-1
           servicePort: "2376"
-    # mongo-mengxin-ml traffic
-    # - tcp:
-    #     port: "27017"
-    #     backend:
-    #       serviceName: mongo-mengxin-ml-clusterip
-    #       servicePort: "27017"
-    # redis-mengxin-ml traffic
+    # mengxin-sea1-test-vm-instance-2 ssh traffic
     - tcp:
-        port: "6379"
+        port: "2002"
         backend:
-          serviceName: redis-mengxin-ml-clusterip
-          servicePort: "6379"
+          serviceName: mengxin-sea1-test-vm-instance-2
+          servicePort: "22"
+    # mengxin-sea1-test-vm-instance-3 rdp traffic
+    - tcp:
+        port: "2003"
+        backend:
+          serviceName: mengxin-sea1-test-vm-instance-3
+          servicePort: "3389"
+    # mengxin-gns3-vm-instance-1 ssh traffic
+    - tcp:
+        port: "2004"
+        backend:
+          serviceName: mengxin-gns3-vm-instance-1
+          servicePort: "22"
+    # ssl.mengxin.ml.keyless ssl traffic (dev)
+    - tcp:
+        port: "2407"
+        backend:
+          serviceName: ssl-mengxin-ml-keyless-clusterip
+          servicePort: "2407"
