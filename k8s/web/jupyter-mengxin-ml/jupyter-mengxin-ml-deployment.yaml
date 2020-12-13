@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jupyter-mengxin-ml-deployment
+  namespace: web
+  labels:
+    app: jupyter
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+          pod: jupyter-mengxin-ml
+    template:
+        metadata:
+          labels:
+            pod: jupyter-mengxin-ml
+        spec:
+          volumes:
+            - name: notebook-storage
+              nfs:
+                  path: /jupyter
+                  server: common-storage-nfs-clusterip.tcp.svc.cluster.local
+          containers:
+            - name: jupyter-mengxin-ml
+              image: mengxin891029/jupyter-mengxin-ml:latest
+              ports:
+                - name: jupyter
+                  containerPort: 8888
+              volumeMounts:
+                - name: notebook-storage
+                  mountPath: /home/jovyan/work

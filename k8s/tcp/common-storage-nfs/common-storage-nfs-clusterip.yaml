@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: common-storage-nfs-clusterip
+  namespace: tcp
+spec:
+  selector:
+    pod: common-storage-nfs
+  type: ClusterIP
+  ports:
+    - name: nfs-111
+      port: 111
+      targetPort: 111
+    - name: nfs-2049
+      port: 2049
+      targetPort: 2049

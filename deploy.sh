@@ -39,9 +39,16 @@ kubectl apply -f k8s/web/httpbin-mengxin-ml
 kubectl apply -f k8s/web/mongo-express-mengxin-ml
 
 
+# update jupyter-mengxin-ml
+docker build -t mengxin891029/jupyter-mengxin-ml:latest -t mengxin891029/jupyter-mengxin-ml:$GIT_SHA -f ./docker-images/jupyter/Dockerfile ./docker-images/jupyter
+docker push mengxin891029/jupyter-mengxin-ml:$GIT_SHA
+docker push mengxin891029/jupyter-mengxin-ml:latest
+kubectl apply -f k8s/web/jupyter-mengxin-ml
+kubectl set image --namespace web deployments/jupyter-mengxin-ml-deployment jupyter-mengxin-ml=mengxin891029/jupyter-mengxin-ml:$GIT_SHA
 
 # update general kubernetes namespace: web
 kubectl apply -f k8s/web
+
 
 
 
@@ -64,10 +71,11 @@ kubectl apply -f k8s/tcp/ssl-mengxin-ml-keyless
 kubectl set image --namespace tcp deployments/ssl-mengxin-ml-keyless-deployment ssl-mengxin-ml=mengxin891029/keyless:$GIT_SHA
 
 
+# update common-storage-nfs
+kubectl apply -f k8s/tcp/common-storage-nfs
 
-# update keys-storage-nfs
-kubectl apply -f k8s/tcp/keys-storage-nfs
-
+# update mengxin-sea1-test-vm
+kubectl apply -f k8s/tcp/mengxin-sea1-test-vm
 
 
 # update mengxin-sea1-test-vm

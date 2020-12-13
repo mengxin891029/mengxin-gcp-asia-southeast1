@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: common-storage-nfs-deployment
+  namespace: tcp
+  labels:
+    app: common-storage-nfs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: common-storage-nfs
+  template:
+    metadata:
+      labels:
+        pod: common-storage-nfs
+    spec:
+      volumes:
+        - name: common-storage
+          persistentVolumeClaim:
+            claimName: common-storage-pvc
+      containers:
+        - name: common-storage-nfs
+          image: itsthenetwork/nfs-server-alpine:latest
+          securityContext:
+            privileged: true
+          ports:
+            - name: nfs-111
+              containerPort: 111
+            - name: nfs-2049
+              containerPort: 2049
+          volumeMounts:
+            - name: common-storage
+              mountPath: /mnt/common-storage
+          env:
+            - name: SHARED_DIRECTORY
+              value: /mnt/common-storage

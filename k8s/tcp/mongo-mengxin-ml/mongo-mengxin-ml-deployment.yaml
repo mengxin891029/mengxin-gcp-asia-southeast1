@@ -16,10 +16,15 @@ spec:
       labels:
         pod: mongo-mengxin-ml
     spec:
+      # volumes:
+        # - name: mongo-storage
+        #   persistentVolumeClaim:
+        #     claimName: mongo-storage-pvc
       volumes:
         - name: mongo-storage
-          persistentVolumeClaim:
-            claimName: mongo-storage-pvc
+          nfs:
+            path: /mongo
+            server: common-storage-nfs-clusterip.tcp.svc.cluster.local
       containers:
         - name: mongo-mengxin-ml
           image: mongo

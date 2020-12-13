@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: common-storage-pv
+  namespace: tcp
+spec:
+  storageClassName: "common-storage"
+  capacity:
+    storage: 10G
+  accessModes:
+    - ReadWriteOnce
+  claimRef:
+    namespace: tcp
+    name: common-storage-pvc
+  gcePersistentDisk:
+    pdName: mengxin-asia-southeast1-a-pd-4
+    fsType: ext4
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: common-storage-pvc
+  namespace: tcp
+spec:
+  storageClassName: "common-storage"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10G

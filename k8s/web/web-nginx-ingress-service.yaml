@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
     name: web-nginx-ingress-service
@@ -17,6 +17,7 @@ spec:
               - www.mengxin.ml
               - mongo-express.mengxin.ml
               - chat.mengxin.ml
+              - jupyter.mengxin.ml
           secretName: mengxin-ml-cert
     rules:
         - host: sea.mengxin.ml
@@ -61,3 +62,10 @@ spec:
                     backend:
                         serviceName: chat-mengxin-ml-clusterip
                         servicePort: 3000
+        - host: jupyter.mengxin.ml
+          http:
+              paths:
+                  - path: /
+                    backend:
+                        serviceName: jupyter-mengxin-ml-clusterip
+                        servicePort: 8888
