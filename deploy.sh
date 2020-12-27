@@ -74,9 +74,6 @@ kubectl set image --namespace tcp deployments/ssl-mengxin-ml-keyless-deployment 
 # update common-storage-nfs
 kubectl apply -f k8s/tcp/common-storage-nfs
 
-# update mengxin-sea1-test-vm
-kubectl apply -f k8s/tcp/mengxin-sea1-test-vm
-
 
 # update mengxin-sea1-test-vm
 kubectl apply -f k8s/tcp/mengxin-sea1-test-vm
