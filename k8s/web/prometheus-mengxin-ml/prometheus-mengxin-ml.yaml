@@ -1,0 +1,8 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: prometheus-mengxin-ml
+  namespace: web
+spec:
+  type: ExternalName
+  externalName: prom-kube-prometheus-prometheus.monitoring.svc.cluster.local

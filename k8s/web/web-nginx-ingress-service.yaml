@@ -18,6 +18,8 @@ spec:
               - mongo-express.mengxin.ml
               - chat.mengxin.ml
               - jupyter.mengxin.ml
+              - prometheus.mengxin.ml
+              - grafana.mengxin.ml
           secretName: mengxin-ml-cert
     rules:
         - host: sea.mengxin.ml
@@ -69,3 +71,17 @@ spec:
                     backend:
                         serviceName: jupyter-mengxin-ml-clusterip
                         servicePort: 8888
+        - host: prometheus.mengxin.ml
+          http:
+              paths:
+                  - path: /
+                    backend:
+                        serviceName: prometheus-mengxin-ml
+                        servicePort: 9090
+        - host: grafana.mengxin.ml
+          http:
+              paths:
+                  - path: /
+                    backend:
+                        serviceName: grafana-mengxin-ml
+                        servicePort: 80

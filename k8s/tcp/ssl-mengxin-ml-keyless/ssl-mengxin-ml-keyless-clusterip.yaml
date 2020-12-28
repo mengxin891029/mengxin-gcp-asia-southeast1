@@ -11,3 +11,6 @@ spec:
     - name: keyless
       port: 2407
       targetPort: 2407
+    - name: metrics
+      port: 2406
+      targetPort: 2406

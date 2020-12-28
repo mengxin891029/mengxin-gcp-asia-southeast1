@@ -1,0 +1,8 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: grafana-mengxin-ml
+  namespace: web
+spec:
+  type: ExternalName
+  externalName: prometheus-grafana.monitoring.svc.cluster.local

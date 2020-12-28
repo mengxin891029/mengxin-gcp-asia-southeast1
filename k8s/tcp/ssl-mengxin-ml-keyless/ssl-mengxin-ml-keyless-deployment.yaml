@@ -26,6 +26,8 @@ spec:
               ports:
                 - name: keyless
                   containerPort: 2407
+                - name: metrics
+                  containerPort: 2406
               volumeMounts:
                 - name: keys-storage
                   mountPath: /etc/keyless/keys

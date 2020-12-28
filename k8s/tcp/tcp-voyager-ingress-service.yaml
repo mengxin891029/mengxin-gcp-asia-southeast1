@@ -13,12 +13,12 @@ spec:
         backend:
           serviceName: mengxin-sea1-test-vm-instance-1
           servicePort: "22"
-    # mengxin-sea1-test-vm-instance-1 docker tls remote host traffic
-    - tcp:
-        port: "2376"
-        backend:
-          serviceName: mengxin-sea1-test-vm-instance-1
-          servicePort: "2376"
+    # # mengxin-sea1-test-vm-instance-1 docker tls remote host traffic
+    # - tcp:
+    #     port: "2376"
+    #     backend:
+    #       serviceName: mengxin-sea1-test-vm-instance-1
+    #       servicePort: "2376"
     # mengxin-sea1-test-vm-instance-2 ssh traffic
     - tcp:
         port: "2002"
@@ -43,3 +43,14 @@ spec:
         backend:
           serviceName: ssl-mengxin-ml-keyless-clusterip
           servicePort: "2407"
+    # ssl.mengxin.ml.keyless metrics traffic
+    # - tcp:
+    #     port: "2406"
+    #     backend:
+    #       serviceName: ssl-mengxin-ml-keyless-clusterip
+    #       servicePort: "2406"
+    # - tcp:
+    #     port: "2408"
+    #     backend:
+    #       serviceName: mengxin-test-app
+    #       servicePort: "8081"
