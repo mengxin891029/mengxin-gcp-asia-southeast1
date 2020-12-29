@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: jupyter-mengxin-ml-clusterip
   namespace: web
+  labels:
+    app: jupyter-mengxin-ml
 spec:
   selector:
     pod: jupyter-mengxin-ml

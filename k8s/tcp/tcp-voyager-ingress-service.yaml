@@ -25,12 +25,12 @@ spec:
         backend:
           serviceName: mengxin-sea1-test-vm-instance-2
           servicePort: "22"
-    # mengxin-sea1-test-vm-instance-3 rdp traffic
-    - tcp:
-        port: "2003"
-        backend:
-          serviceName: mengxin-sea1-test-vm-instance-3
-          servicePort: "3389"
+    # # mengxin-sea1-test-vm-instance-3 rdp traffic
+    # - tcp:
+    #     port: "2003"
+    #     backend:
+    #       serviceName: mengxin-sea1-test-vm-instance-3
+    #       servicePort: "3389"
     # mengxin-gns3-vm-instance-1 ssh traffic
     - tcp:
         port: "2004"

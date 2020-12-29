@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: redis-mengxin-ml-clusterip
   namespace: tcp
+  labels:
+    app: redis-mengxin-ml
 spec:
   selector:
     pod: redis-mengxin-ml

@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: ssl-mengxin-ml-keyless-clusterip
   namespace: tcp
+  labels:
+    app: ssl-mengxin-ml-keyless
 spec:
   selector:
     pod: ssl-mengxin-ml

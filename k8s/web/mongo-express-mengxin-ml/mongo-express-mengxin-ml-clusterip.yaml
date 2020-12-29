@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: mongo-express-mengxin-ml-clusterip
   namespace: web
+  labels:
+    app: mongo-express-mengxin-ml
 spec:
   selector:
     pod: mongo-express-mengxin-ml

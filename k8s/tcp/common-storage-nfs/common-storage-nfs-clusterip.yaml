@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: common-storage-nfs-clusterip
   namespace: tcp
+  labels:
+    app: common-storage-nfs
 spec:
   selector:
     pod: common-storage-nfs

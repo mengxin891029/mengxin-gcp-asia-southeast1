@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: httpbin-mengxin-ml-clusterip
   namespace: web
+  labels:
+    app: httpbin-mengxin-ml
 spec:
   selector:
     pod: httpbin-mengxin-ml

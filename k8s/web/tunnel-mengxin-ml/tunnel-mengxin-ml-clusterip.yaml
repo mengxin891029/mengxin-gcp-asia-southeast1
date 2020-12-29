@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: tunnel-mengxin-ml-clusterip
   namespace: web
+  labels:
+    app: tunnel-mengxin-ml
 spec:
   selector:
     pod: tunnel-mengxin-ml

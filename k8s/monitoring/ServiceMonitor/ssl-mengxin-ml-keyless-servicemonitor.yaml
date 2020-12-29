@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  namespace: monitoring
+  name: ssl-mengxin-ml-keyless-servicemonitor
+  labels:
+    app: ssl-mengxin-ml-keyless
+spec:
+  namespaceSelector:
+    matchNames:
+    - tcp
+  selector:
+    matchLabels:
+      app: ssl-mengxin-ml-keyless
+  endpoints:
+    - port: metrics
