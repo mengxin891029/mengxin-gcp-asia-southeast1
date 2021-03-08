@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-tunnel-tunnel-mengxin-ml-deployment
+  namespace: web
+  labels:
+    app: argo-tunnel-tunnel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: argo-tunnel-tunnel-mengxin-ml
+  template:
+    metadata:
+      labels:
+        pod: argo-tunnel-tunnel-mengxin-ml
+    spec:
+      containers:
+        - name: argo-tunnel-tunnel-mengxin-ml
+          image: cloudflare/cloudflared:2021.2.2
+          # env:
+          #   - name: ARGO_TUNNEL_NAME
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: argo-tunnel-tunnel-mengxin-ml-secret
+          #         key: ARGO_TUNNEL_NAME
+          #   - name: ARGO_TUNNEL_ENDPOINT
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: argo-tunnel-tunnel-mengxin-ml-secret
+          #         key: ARGO_TUNNEL_ENDPOINT
+          # command: ["/bin/sed","-i s/tunnel:/tunnel:\ $ARGO_TUNNEL_NAME/g /etc/cloudflared/config.yml"]
+          volumeMounts:
+          - name: argo-tunnel-tunnel-mengxin-ml-configmap-volume
+            mountPath: /etc/cloudflared
+          command: [ "cloudflared", "tunnel", "run","--force"]
+      volumes:
+        - name: argo-tunnel-tunnel-mengxin-ml-configmap-volume
+          configMap:
+            name: argo-tunnel-tunnel-mengxin-ml-configmap
+      # restartPolicy: Never
+
